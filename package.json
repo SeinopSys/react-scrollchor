@@ -1,6 +1,6 @@
 {
   "name": "@seinopsys-forks/react-scrollchor",
-  "version": "7.0.0-0",
+  "version": "7.0.0-1",
   "description": "A React component for scroll to #hash links with smooth animations",
   "files": [
     "lib"

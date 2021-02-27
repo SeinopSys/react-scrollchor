@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, FC, MouseEventHandler } from 'react';
 import React, { useCallback, useMemo } from 'react';
-import { easeOutQuad } from './easing';
+import * as easingFns from './easing';
 import { AnimateConfig, animateScroll, normalizeId, updateHistory } from './helpers';
 
 export interface ScrollchorProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'onClick'> {
@@ -37,7 +37,7 @@ export interface ScrollchorProps extends Omit<AnchorHTMLAttributes<HTMLAnchorEle
    *
    * Default to `false`
    */
-  disableHistory: boolean;
+  disableHistory?: boolean;
 }
 
 const Scrollchor: FC<ScrollchorProps> = ({
@@ -46,7 +46,7 @@ const Scrollchor: FC<ScrollchorProps> = ({
   animate: inAnimate = {},
   beforeAnimate,
   afterAnimate,
-  disableHistory,
+  disableHistory = false,
   children,
   ...anchorProps
 }) => {
@@ -56,7 +56,7 @@ const Scrollchor: FC<ScrollchorProps> = ({
     const {
       offset = 0,
       duration = 400,
-      easing = easeOutQuad,
+      easing = easingFns.easeOutQuad,
     } = inAnimate;
     return {
       offset,
@@ -89,3 +89,5 @@ const Scrollchor: FC<ScrollchorProps> = ({
 
 // noinspection JSUnusedGlobalSymbols
 export default Scrollchor;
+
+export const easing = easingFns;
