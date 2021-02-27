@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "src",
+    "declaration": true,
+    "allowJs": false,
+    "lib": [
+      "DOM",
+      "ES6"
+    ],
+    "target": "ES6",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "stripInternal": true,
+    "emitDeclarationOnly": true,
+    "isolatedModules": true,
+    "declarationDir": "lib"
+  },
+  "exclude": [
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}

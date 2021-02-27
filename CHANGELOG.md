@@ -1,5 +1,11 @@
 ## master (unreleased)
 
+SInce the original package has not been updated for around 3 years I (SeinopSys) decided to fork the project and make some breaking changes I wanted to do to make using this package easier for myself.
+
+- Everything has been rewritten to use TypeScript, with published type definitions
+- Animation `easing` configuration now has proper types and documentation,  and is (hopefully) now also compatible with all the easing functions provided by [jquery-easing](https://github.com/danro/jquery-easing/blob/master/jquery.easing.js) - though I have not tested this yet
+- Added a few additional built-in easing types for _ease_ of use
+
 ## 6.0.0
 
 `Scrollchor` React component now belong to `Some React Component` Organization Team. This move will ensure its future development and manteniance.

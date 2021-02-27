@@ -3,3 +3,6 @@ CHANGELOG.md
 CONTRIBUTING.md
 src
 package-lock.json*
+.eslintrc
+.eslintignore
+tsconfig.json

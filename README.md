@@ -1,15 +1,14 @@
 # react-scrollchor (React Scrollchor)
 
-[![npm version](https://badge.fury.io/js/react-scrollchor.svg)](https://badge.fury.io/js/react-scrollchor)
-[![npm downloads](https://img.shields.io/npm/dm/react-scrollchor.svg?style=flat-square)](https://www.npmjs.com/package/react-scrollchor)
-[![Donate](https://img.shields.io/badge/$-support-green.svg?style=flat-square)](https://paypal.me/bySabi/10)
+[![npm version](https://img.shields.io/npm/v/@seinopsys-forks/react-scrollchor)](https://www.npmjs.com/package/@seinopsys-forks/react-scrollchor)
+[![npm downloads](https://img.shields.io/npm/dm/@seinopsys-forks/react-scrollchor.svg?style=flat-square)](https://www.npmjs.com/package/@seinopsys-forks/react-scrollchor)
 
 > A React component for scroll to `#hash` links with smooth animations.
 > Scrollchor is a mix of `Scroll` and `Anchor`, a joke name for a useful component.
 
 See it in action:
-* demo [video](https://github.com/some-react-components/react-scrollchor/blob/example/demo/scrollchor.webm?raw=true)
-* example [page](https://some-react-components.github.io/react-scrollchor/) and [source code](https://github.com/some-react-components/react-scrollchor/tree/example)
+* demo [video](https://github.com/SeinopSys/react-scrollchor/blob/example/demo/scrollchor.webm?raw=true)
+* example [page](https://seinopsys.github.io/react-scrollchor/) and [source code](https://github.com/SeinopSys/react-scrollchor/tree/example)
 
 
 `hash` is the `id` of a HTML tag on current page.
@@ -20,7 +19,7 @@ See it in action:
 ### npm
 
 ```bash
-npm install react-scrollchor --save
+npm install @seinopsys-forks/react-scrollchor --save
 ```
 
 ### Dependencies
@@ -30,9 +29,8 @@ npm install react-scrollchor --save
 ## Usage
 
 ```js
-import Scrollchor from 'react-scrollchor';
-```
-```js
+import Scrollchor from '@seinopsys-forks/react-scrollchor';
+
 export default (props) => (
   <Page>
 
@@ -59,55 +57,8 @@ export default (props) => (
 </Page>
 ```
 
-## Prop types
-```js
-  propTypes: {
-
-    /**
-     * id attribute of the target DOM node
-     * - `#` can be omitted
-     * - let it blank, `to = ''`, for scroll to page top
-     * - this prop is required
-     */
-    to: PropTypes.string.isRequired,
-
-    /**
-     * id attribute of the scrollable DOM node
-     * - `#` can be omitted
-     * - uses the root element of the document if omitted
-     */
-    target: PropTypes.string,
-
-    /**
-     * scroll smooth animation can be customized
-     * Accepted options, Ex: (default)
-     *  { offset: 0, duration: 400, easing: easeOutQuad }
-     */
-    animate: PropTypes.object,
-
-    /**
-     * callback function triggered before scroll to #hash
-     * @param1 Received click event
-     */
-    beforeAnimate: PropTypes.func,
-
-    /**
-     * callback function triggered after scroll to #hash
-     * @param1 Received click event
-     */
-    afterAnimate: PropTypes.func
-
-    /**
-     * enable/disable update browser history with scroll behaviours
-     * Default to `false`
-     */
-    disableHistory: PropTypes.bool
-}
-```
-### Reactive `props`
-Update `props` will re-render `Scrollchor` element
-
-Example: [updating  "to" prop](https://github.com/some-react-components/react-scrollchor/blob/example/src/App.js#L28)
+## Props
+The component is written in TypeScript and the npm package contains type definitions which will help you with IDE autocompletion.
 
 ## Custom animations
 
@@ -139,16 +90,16 @@ Use these callbacks to trigger behaviors like: update state, load async stuff, e
 ## Simulate click API
 Scrollchor includes a dedicate API to do animate scroll programmatically that works like normal click events using `simulateClick()`.
 
-Example: [using simulateClick](https://github.com/some-react-components/react-scrollchor/blob/example/src/App.js#L16)
+Example: [using simulateClick](https://github.com/SeinopSys/react-scrollchor/blob/example/src/App.js#L16)
 
 When used programmatically, some use-cases don't need `anchor tags`. On these cases use childless `Scrollchor`.
 
 ### Childless  `Scrollchor`
-This component will render `null` and the user is reponsible for storing the component [reference](https://facebook.github.io/react/docs/refs-and-the-dom.html), Ex: [childless](https://github.com/some-react-components/react-scrollchor/blob/example/src/App.js#L23)
+This component will render `null` and the user is reponsible for storing the component [reference](https://facebook.github.io/react/docs/refs-and-the-dom.html), Ex: [childless](https://github.com/SeinopSys/react-scrollchor/blob/example/src/App.js#L23)
 ```js
 <Scrollchor ref={ref => (this._back = ref)} to="_back" />
 ```
-Example: [calling `simulateClick()` on childless `ref`](https://github.com/some-react-components/react-scrollchor/blob/example/src/App.js#L16)
+Example: [calling `simulateClick()` on childless `ref`](https://github.com/SeinopSys/react-scrollchor/blob/example/src/App.js#L16)
 ```js
 _afterAnimate = () => {
   this.setState({ to: this._iterator.next().value });
@@ -160,12 +111,12 @@ _afterAnimate = () => {
 Scrollchor works within any scrollable parent container. The root element of the `document` will be choose if none is specified.
 
 Hosted example show how to use a different container using prop `target`.
-* Click `Within scrollable container` checkbox: [hosted example](https://some-react-components.github.io/react-scrollchor/)(full example below)
+* Click `Within scrollable container` checkbox: [hosted example](https://seinopsys.github.io/react-scrollchor/)(full example below)
 
 
 ## Full Example
 
-[react-scrollchor--example](https://github.com/some-react-components/react-scrollchor/tree/example)
+[react-scrollchor--example](https://github.com/SeinopSys/react-scrollchor/tree/example)
 
 ## Credits
 
@@ -174,6 +125,7 @@ Hosted example show how to use a different container using prop `target`.
 
 ### maintainers
 * xehpuk <> [@xehpuk](https://github.com/xehpuk)
+* SeinopSys <david@seinopsys.dev> [@SeinopSys](https://seinopsys.dev)
 
 ### contributors
 * Jean Chung <> [@jeanchung](https://github.com/jeanchung)

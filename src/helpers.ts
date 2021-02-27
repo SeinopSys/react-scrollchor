@@ -1,0 +1,134 @@
+import { clearTimeout, setTimeout } from 'requestanimationframe-timer';
+
+/**
+ * @param percent     Percent completed of the animation
+ * @param elapsedTime Time elapsed since the animation began, in ms
+ * @param startValue  The starting value before the animation
+ * @param valueChange Total change compared to the starting value
+ * @param duration    Duration of the animation
+ * @returns The new scroll position based on the parameters
+ */
+export type ScrollchorEasingFunction = (
+  percent: number,
+  elapsedTime: number,
+  startValue: number,
+  valueChange: number,
+  duration: number,
+) => number;
+
+export interface AnimateConfig {
+  /**
+   * Additional pixels to scroll relative to the target element (supports negative values)
+   */
+  offset: number;
+  /**
+   * Length of the animation in ms
+   */
+  duration: number;
+  /**
+   * Easing function to calculate the animation steps. Pass a function that matches the exported
+   * interface for a custom easing.
+   */
+  easing: ScrollchorEasingFunction;
+}
+
+/** @internal */
+type ScrollAnimator = (
+  id: string,
+  targetId: string,
+  animate: AnimateConfig,
+) => Promise<string | void>;
+
+/** @internal */
+export const animateScroll: ScrollAnimator = ((): ScrollAnimator => {
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+  let resolvePrevious: (value: string | void | PromiseLike<string | void>) => void;
+
+  return (id, targetId, animate): ReturnType<ScrollAnimator> => {
+    let targetElement: HTMLElement | undefined;
+
+    if (typeof targetId === 'string') {
+      try {
+        targetElement = document.getElementById(targetId);
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(`Failed to get element by id ${targetId}, falling back to default`);
+      }
+    }
+
+    function getScrollTop() {
+      // like jQuery -> $('html, body').scrollTop
+      return targetElement
+        ? targetElement.scrollTop
+        : document.documentElement.scrollTop || document.body.scrollTop;
+    }
+
+    function setScrollTop(position: number) {
+      if (targetElement) {
+        targetElement.scrollTop = position;
+      } else {
+        document.documentElement.scrollTop = position;
+        document.body.scrollTop = position;
+      }
+    }
+
+    function getOffsetTop<T extends Element>(element: T): number {
+      const parentOffsetTop = targetElement
+        ? targetElement.getBoundingClientRect().top
+        : 0;
+      return element.getBoundingClientRect().top - parentOffsetTop + getScrollTop();
+    }
+
+    return new Promise<string | void>((resolve, reject) => {
+      const element = id ? document.getElementById(id) : document.body;
+
+      if (!element) {
+        reject(new Error(`Cannot find element: #${id}`));
+        return;
+      }
+
+      const { offset, duration, easing } = animate;
+      const startTime = Date.now();
+      const start = getScrollTop();
+      const end = getOffsetTop(element) + offset;
+      const change = end - start;
+
+      function animateFn() {
+        const currentTime = Date.now();
+        const remaining = Math.max(0, startTime + duration - currentTime);
+        const percent = 1 - (remaining / duration || 0);
+        const eased = easing(percent, duration * percent, start, change, duration);
+        const now = (end - start) * eased + start;
+        setScrollTop(now);
+
+        if (percent < 1) {
+          const increment = 20;
+          timeoutId = setTimeout(animateFn, increment);
+        } else {
+          timeoutId = undefined;
+          resolve(id);
+        }
+      }
+
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+        resolvePrevious();
+      }
+      resolvePrevious = resolve;
+      animateFn();
+    });
+  };
+})();
+
+/** @internal */
+export const updateHistory = (id: string): void => {
+  const hashId = `#${id}`;
+  if (typeof window.history.pushState === 'function') {
+    window.history.pushState(null, null, hashId);
+  } else {
+    window.location.hash = hashId;
+  }
+};
+
+/** @internal */
+export const normalizeId = (id: string): string => (id && id.replace(/^#/, '')) || '';
