@@ -1,7 +1,7 @@
 import type { AnchorHTMLAttributes, FC, MouseEventHandler } from 'react';
 import React, { useCallback, useMemo } from 'react';
-import * as easingFns from './easing';
 import { AnimateConfig, animateScroll, normalizeId, updateHistory } from './helpers';
+import { easing as easingFns } from './easing';
 
 export interface ScrollchorProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'onClick'> {
   /**
@@ -90,4 +90,4 @@ const Scrollchor: FC<ScrollchorProps> = ({
 // noinspection JSUnusedGlobalSymbols
 export default Scrollchor;
 
-export const easing = easingFns;
+export * from './easing';

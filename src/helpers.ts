@@ -6,7 +6,8 @@ import { clearTimeout, setTimeout } from 'requestanimationframe-timer';
  * @param startValue  The starting value before the animation
  * @param valueChange Total change compared to the starting value
  * @param duration    Duration of the animation
- * @returns The new scroll position based on the parameters
+ * @returns Decimal indicating how close the animation is to the end value
+ *          (0 = start, 1 = finished, 1.2 = 20% over the end value, think "bounce" effects)
  */
 export type ScrollchorEasingFunction = (
   percent: number,
@@ -47,7 +48,7 @@ export const animateScroll: ScrollAnimator = ((): ScrollAnimator => {
   return (id, targetId, animate): ReturnType<ScrollAnimator> => {
     let targetElement: HTMLElement | undefined;
 
-    if (typeof targetId === 'string') {
+    if (typeof targetId === 'string' && targetId !== '') {
       try {
         targetElement = document.getElementById(targetId);
       } catch (e) {
@@ -91,13 +92,12 @@ export const animateScroll: ScrollAnimator = ((): ScrollAnimator => {
       const startTime = Date.now();
       const start = getScrollTop();
       const end = getOffsetTop(element) + offset;
-      const change = end - start;
 
       function animateFn() {
         const currentTime = Date.now();
         const remaining = Math.max(0, startTime + duration - currentTime);
         const percent = 1 - (remaining / duration || 0);
-        const eased = easing(percent, duration * percent, start, change, duration);
+        const eased = easing(percent, duration * percent, 0, 1, duration);
         const now = (end - start) * eased + start;
         setScrollTop(now);
 
