@@ -40,7 +40,7 @@ export interface ScrollchorProps extends Omit<AnchorHTMLAttributes<HTMLAnchorEle
   disableHistory?: boolean;
 }
 
-const Scrollchor: FC<ScrollchorProps> = ({
+export const Scrollchor: FC<ScrollchorProps> = ({
   to: inTo,
   target: inTarget,
   animate: inAnimate = {},
@@ -86,6 +86,3 @@ const Scrollchor: FC<ScrollchorProps> = ({
     </a>
   );
 };
-
-// noinspection JSUnusedGlobalSymbols
-export default Scrollchor;
