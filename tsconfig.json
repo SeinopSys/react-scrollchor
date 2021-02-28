@@ -16,7 +16,7 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "emitDeclarationOnly": true,
-    "outFile": "lib/index.d.ts",
+    "outDir": "lib",
     "strict": true,
     "strictNullChecks": true
   },

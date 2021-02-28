@@ -1,6 +1,6 @@
 {
   "name": "@seinopsys-forks/react-scrollchor",
-  "version": "7.0.0-4",
+  "version": "7.0.0-5",
   "description": "A React component for scroll to #hash links with smooth animations",
   "files": [
     "lib"
@@ -12,7 +12,7 @@
     "npm": ">=3.0"
   },
   "scripts": {
-    "build": "rimraf lib && mkdirp lib && tsc && babel src/ --out-file lib/scrollchor.js --extensions '.ts,.tsx'",
+    "build": "rimraf lib && mkdirp lib && tsc && babel src/ -d lib/ --extensions '.ts,.tsx'",
     "lint": "eslint src/**/*.*",
     "test": "exit 0"
   },
