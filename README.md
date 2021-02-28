@@ -29,7 +29,7 @@ npm install @seinopsys-forks/react-scrollchor --save
 ## Usage
 
 ```js
-import Scrollchor from '@seinopsys-forks/react-scrollchor';
+import { Scrollchor } from '@seinopsys-forks/react-scrollchor';
 
 export default (props) => (
   <Page>
