@@ -1,4 +1,4 @@
-# react-scrollchor (React Scrollchor)
+# React Scrollchor
 
 [![npm version](https://img.shields.io/npm/v/@seinopsys-forks/react-scrollchor)](https://www.npmjs.com/package/@seinopsys-forks/react-scrollchor)
 [![npm downloads](https://img.shields.io/npm/dm/@seinopsys-forks/react-scrollchor.svg?style=flat-square)](https://www.npmjs.com/package/@seinopsys-forks/react-scrollchor)
@@ -11,7 +11,7 @@ See it in action:
 * example [page](https://seinopsys.github.io/react-scrollchor/) and [source code](https://github.com/SeinopSys/react-scrollchor/tree/example)
 
 
-`hash` is the `id` of a HTML tag on current page.
+`hash` is the `id` of a HTML tag on the current page.
 
 
 ## Installation
@@ -32,29 +32,29 @@ npm install @seinopsys-forks/react-scrollchor --save
 import { Scrollchor } from '@seinopsys-forks/react-scrollchor';
 
 export default (props) => (
-  <Page>
-
-    <Navbar brand={brand} className="navbar-fixed-top">
-      <NavItem><Scrollchor to="" className="nav-link">Home</Scrollchor></NavItem>
-      <NavItem><Scrollchor to="#sample-code" className="nav-link">Sample</Scrollchor></NavItem>
-      <NavItem><Scrollchor to="#features" className="nav-link">Features</Scrollchor></NavItem>
-      <NavItem><Scrollchor to="footer" className="nav-link">SignUp</Scrollchor></NavItem>
-    </Navbar>
-
-
-  <Section id="sample-code">
-
-  </Section>
-
-  <div id="features">
-
-  </div>
-
-  <footer id="footer">
-
-  </footer>
-
-</Page>
+    <Page>
+    
+        <Navbar brand={brand} className="navbar-fixed-top">
+          <NavItem><Scrollchor to="" className="nav-link">Home</Scrollchor></NavItem>
+          <NavItem><Scrollchor to="#sample-code" className="nav-link">Sample</Scrollchor></NavItem>
+          <NavItem><Scrollchor to="#features" className="nav-link">Features</Scrollchor></NavItem>
+          <NavItem><Scrollchor to="footer" className="nav-link">SignUp</Scrollchor></NavItem>
+        </Navbar>
+        
+        <Section id="sample-code">
+        
+        </Section>
+        
+        <div id="features">
+        
+        </div>
+        
+        <footer id="footer">
+        
+        </footer>
+    
+    </Page>
+);
 ```
 
 ## Props
@@ -70,9 +70,10 @@ Animation behavior can be customized:
 
 ### default animation settings
 ```js
-{ offset: 0, duration: 400, easing: easeOutQuad }
+import { AnimateConfig, easeOutQuad } from '@seinopsys-forks/react-scrollchor';
+
+const defaultAnimation: AnimateConfig = { offset: 0, duration: 400, easing: easeOutQuad };
 ```
-This setting is equivalent to default jQuery.animate `easing: swing`
 
 ### more `Easing` functions
 
@@ -124,13 +125,13 @@ Hosted example show how to use a different container using prop `target`.
 * bySabi Files <> [@bySabi](https://github.com/bySabi)
 
 ### maintainers
-* xehpuk <> [@xehpuk](https://github.com/xehpuk)
 * SeinopSys <david@seinopsys.dev> [@SeinopSys](https://seinopsys.dev)
 
 ### contributors
 * Jean Chung <> [@jeanchung](https://github.com/jeanchung)
 * Chua Kang Ming <> [@kambing86](https://github.com/kambing86)
 * Benjamin MICHEL <> [@SBRK](https://github.com/SBRK)
+* xehpuk <> [@xehpuk](https://github.com/xehpuk)
 
 ## Contributing
 
