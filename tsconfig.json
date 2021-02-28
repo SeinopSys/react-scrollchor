@@ -15,7 +15,6 @@
     "stripInternal": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "emitDeclarationOnly": true,
     "outDir": "lib",
     "strict": true,
     "strictNullChecks": true

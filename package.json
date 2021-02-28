@@ -1,6 +1,6 @@
 {
   "name": "@seinopsys-forks/react-scrollchor",
-  "version": "7.0.0-5",
+  "version": "7.0.0-6",
   "description": "A React component for scroll to #hash links with smooth animations",
   "files": [
     "lib"
@@ -12,7 +12,7 @@
     "npm": ">=3.0"
   },
   "scripts": {
-    "build": "rimraf lib && mkdirp lib && tsc && babel src/ -d lib/ --extensions '.ts,.tsx'",
+    "build": "webpack",
     "lint": "eslint src/**/*.*",
     "test": "exit 0"
   },
@@ -36,14 +36,9 @@
     "requestanimationframe-timer": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.0",
-    "@babel/core": "^7.13.8",
-    "@babel/preset-env": "^7.13.8",
-    "@babel/preset-react": "^7.12.13",
-    "@babel/preset-typescript": "^7.13.0",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
-    "babel-preset-minify": "^0.5.1",
+    "clean-webpack-plugin": "^3.0.0",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-import-resolver-typescript": "^2.4.0",
@@ -52,10 +47,11 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "mkdirp": "*",
     "react": "^17.0.1",
-    "rimraf": "2.x.x",
-    "typescript": "^4.0.0"
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.2.2",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
   },
   "authors": [
     "bySabi Files <> (https://github.com/bySabi)"

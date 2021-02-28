@@ -4,7 +4,7 @@ import { ScrollchorEasingFunction } from './helpers';
 /**
  * Linear easing
  */
-const linear: ScrollchorEasingFunction = (p) => p;
+export const linear: ScrollchorEasingFunction = (p) => p;
 
 // noinspection JSUnusedGlobalSymbols
 /**
@@ -12,7 +12,7 @@ const linear: ScrollchorEasingFunction = (p) => p;
  *
  * @see https://github.com/jquery/jquery/blob/09f254361f1fe8a563b8a90fe6a4d269f4b11514/src/effects/Tween.js#L101-L103
  */
-const swing: ScrollchorEasingFunction = (p) => 0.5 - Math.cos(p * Math.PI) / 2;
+export const swing: ScrollchorEasingFunction = (p) => 0.5 - Math.cos(p * Math.PI) / 2;
 
 /**
  * Quadratic "out" easing function based on jquery-easing plugin
@@ -22,19 +22,7 @@ const swing: ScrollchorEasingFunction = (p) => 0.5 - Math.cos(p * Math.PI) / 2;
  *
  * @see https://github.com/danro/jquery-easing/blob/a6f21ff77c84cee11562d36c51fb5b9c95f2eec0/jquery.easing.js#L25
  */
-const easeOutQuad: ScrollchorEasingFunction = (_, t, b, c, d) => {
+export const easeOutQuad: ScrollchorEasingFunction = (_, t, b, c, d) => {
   const tDivD = t / d;
   return -c * tDivD * (tDivD - 2) + b;
-};
-
-interface IncludedEasingFunctions {
-  linear: ScrollchorEasingFunction,
-  swing: ScrollchorEasingFunction,
-  easeOutQuad: ScrollchorEasingFunction,
-}
-
-export const easing: IncludedEasingFunctions = {
-  linear,
-  swing,
-  easeOutQuad,
 };

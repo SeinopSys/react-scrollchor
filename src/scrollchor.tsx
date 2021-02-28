@@ -1,7 +1,7 @@
 import type { AnchorHTMLAttributes, FC, MouseEventHandler } from 'react';
 import React, { useCallback, useMemo } from 'react';
 import { AnimateConfig, animateScroll, normalizeId, updateHistory } from './helpers';
-import { easing as easingFns } from './easing';
+import { easeOutQuad } from './easing';
 
 export interface ScrollchorProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'onClick'> {
   /**
@@ -17,7 +17,7 @@ export interface ScrollchorProps extends Omit<AnchorHTMLAttributes<HTMLAnchorEle
   /**
    * Smooth scrolling animation can be customized using this prop
    *
-   * Some pre-defined easing functions are available in the `easing` barrel
+   * Some pre-defined easing functions are available in the `lib/easing` file
    *
    * @example ```
    * { offset: 0, duration: 400, easing: easeOutQuad }
@@ -56,7 +56,7 @@ const Scrollchor: FC<ScrollchorProps> = ({
     const {
       offset = 0,
       duration = 400,
-      easing = easingFns.easeOutQuad,
+      easing = easeOutQuad,
     } = inAnimate;
     return {
       offset,
@@ -89,5 +89,3 @@ const Scrollchor: FC<ScrollchorProps> = ({
 
 // noinspection JSUnusedGlobalSymbols
 export default Scrollchor;
-
-export * from './easing';
