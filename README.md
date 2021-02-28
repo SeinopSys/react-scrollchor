@@ -88,28 +88,8 @@ Use these callbacks to trigger behaviors like: update state, load async stuff, e
 <Scrollchor to="#aboutus" afterAnimate={() => updateState(this)}>Home</Scrollchor>
 ```
 
-## Simulate click API
-Scrollchor includes a dedicate API to do animate scroll programmatically that works like normal click events using `simulateClick()`.
-
-Example: [using simulateClick](https://github.com/SeinopSys/react-scrollchor/blob/example/src/App.js#L16)
-
-When used programmatically, some use-cases don't need `anchor tags`. On these cases use childless `Scrollchor`.
-
-### Childless  `Scrollchor`
-This component will render `null` and the user is reponsible for storing the component [reference](https://facebook.github.io/react/docs/refs-and-the-dom.html), Ex: [childless](https://github.com/SeinopSys/react-scrollchor/blob/example/src/App.js#L23)
-```js
-<Scrollchor ref={ref => (this._back = ref)} to="_back" />
-```
-Example: [calling `simulateClick()` on childless `ref`](https://github.com/SeinopSys/react-scrollchor/blob/example/src/App.js#L16)
-```js
-_afterAnimate = () => {
-  this.setState({ to: this._iterator.next().value });
-    setTimeout(() => this._back.simulateClick(), 1000);
-};
-```
-
 ## Scrollable ancestor container
-Scrollchor works within any scrollable parent container. The root element of the `document` will be choose if none is specified.
+Scrollchor works within any scrollable parent container. The root element of the `document` will be chosen if none is specified.
 
 Hosted example show how to use a different container using prop `target`.
 * Click `Within scrollable container` checkbox: [hosted example](https://seinopsys.github.io/react-scrollchor/)(full example below)
