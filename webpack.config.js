@@ -3,7 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  entry: './src/scrollchor.tsx',
+  entry: './src/index.ts',
   externals: {
     'react': 'commonjs2 react',
     'requestanimationframe-timer': 'commonjs2 requestanimationframe-timer',
