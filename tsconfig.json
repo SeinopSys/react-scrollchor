@@ -9,12 +9,16 @@
       "ES6"
     ],
     "target": "ES6",
+    "module": "CommonJS",
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "stripInternal": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
     "emitDeclarationOnly": true,
-    "isolatedModules": true,
-    "declarationDir": "lib"
+    "outFile": "lib/index.d.ts",
+    "strict": true,
+    "strictNullChecks": true
   },
   "exclude": [
   ],

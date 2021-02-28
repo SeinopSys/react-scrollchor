@@ -50,7 +50,10 @@ export const animateScroll: ScrollAnimator = ((): ScrollAnimator => {
 
     if (typeof targetId === 'string' && targetId !== '') {
       try {
-        targetElement = document.getElementById(targetId);
+        const el = document.getElementById(targetId);
+        if (el !== null) {
+          targetElement = el;
+        }
       } catch (e) {
         // eslint-disable-next-line no-console
         console.error(`Failed to get element by id ${targetId}, falling back to default`);
@@ -124,11 +127,11 @@ export const animateScroll: ScrollAnimator = ((): ScrollAnimator => {
 export const updateHistory = (id: string): void => {
   const hashId = `#${id}`;
   if (typeof window.history.pushState === 'function') {
-    window.history.pushState(null, null, hashId);
+    window.history.pushState({}, '', hashId);
   } else {
     window.location.hash = hashId;
   }
 };
 
 /** @internal */
-export const normalizeId = (id: string): string => (id && id.replace(/^#/, '')) || '';
+export const normalizeId = (id?: string): string => (id && id.replace(/^#/, '')) || '';
