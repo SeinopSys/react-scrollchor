@@ -1,3 +1,3 @@
 src/scrollchor-old.jsx
-lib
-webpack.config.js
+lib/
+rollup.config.js
