@@ -36,7 +36,6 @@
     "@types/react": ">=16.8.0 || 17.x.x"
   },
   "dependencies": {
-    "np": "*",
     "requestanimationframe-timer": "^3.0.0"
   },
   "devDependencies": {
@@ -53,6 +52,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "mkdirp": "*",
+    "np": "^7.5.0",
     "react": "^17.0.1",
     "rimraf": "2.x.x",
     "rollup": "^2.40.0",
